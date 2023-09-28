@@ -1,7 +1,6 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 
-const ToDoForm = () => {
+const ToDoForm = ({ setTask }) => {
   const {
     register,
     handleSubmit,
@@ -9,7 +8,7 @@ const ToDoForm = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => setTask(data);
 
   return (
     <form
