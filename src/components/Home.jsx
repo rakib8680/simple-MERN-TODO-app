@@ -7,9 +7,11 @@ const Home = () => {
   const [task, setTask] = useState(null);
 
   return (
-    <div className="container mx-auto flex justify-center items-center pt-40">
-      <ToDoForm setTask={setTask} />
-      <Task task={task} />
+    <div className="container mx-auto flex justify-center items-center pt-40  ">
+      <div className="bg-teal-600 rounded-md  pb-8">
+        <ToDoForm setTask={setTask}  />
+        <Task task={task}  />
+      </div>
     </div>
   );
 };

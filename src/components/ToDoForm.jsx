@@ -1,19 +1,20 @@
 import { useForm } from "react-hook-form";
 
-const ToDoForm = ({ setTask }) => {
+const ToDoForm = ({ setTask, task }) => {
   const {
     register,
     handleSubmit,
-    watch,
-    formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => setTask(data);
+  const onSubmit = (data) => {
+    setTask( data)
+  };
 
+  
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex bg-teal-600 py-12 px-8 rounded-md"
+      className="flex  pt-12 pb-8 px-8 "
     >
       <div className="flex">
         <input
