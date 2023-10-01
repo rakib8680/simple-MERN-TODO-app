@@ -1,4 +1,6 @@
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { addTask } from "../api/tasks";
 
 const ToDoForm = ({ setTask }) => {
   const {
@@ -8,11 +10,19 @@ const ToDoForm = ({ setTask }) => {
   } = useForm();
 
   const onSubmit = (data) => {
-    setTask( data)
-    reset();
+    addTask(data)
+      .then(res => {
+        if (res.insertedId) {
+          toast.success('Task added successfully')
+          reset();
+
+        }
+      })
+    // setTask( data)
   };
 
-  
+
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
