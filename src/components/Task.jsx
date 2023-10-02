@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaPenToSquare, FaTrash } from 'react-icons/fa6';
-import {BsCheck2} from 'react-icons/bs'
+import { BsCheck2 } from 'react-icons/bs'
+import toast from 'react-hot-toast';
+import axios from 'axios';
 
 
 
 
 
-const Task = ({ tasks }) => {
+const Task = ({ tasks, refetch }) => {
 
 
   console.log(tasks);
+
+  // delete task from database 
+  const deleteTask = async _id => {
+    const res = await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/tasks/${_id}`)
+    if (res.data.deletedCount > 0) {
+      toast.success('Task deleted successfully');
+      refetch();
+    }
+  }
 
 
 
@@ -23,8 +34,8 @@ const Task = ({ tasks }) => {
               <button>
                 <FaPenToSquare />
               </button>
-              <button>
-                <FaTrash />
+              <button onClick={() => deleteTask(task._id)}>
+                <FaTrash className='hover:text-red-400 transition-all duration-200' />
               </button>
               <button>
                 <BsCheck2 size={23} />

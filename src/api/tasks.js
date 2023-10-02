@@ -13,4 +13,6 @@ export const getAllTask = async () => {
     const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/allTasks`)
     return res.data;
 
-}
+};
+
+

@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { addTask } from "../api/tasks";
 
-const ToDoForm = ({ refetch }) => {
+const ToDoForm = ({refetch}) => {
   const {
     register,
     handleSubmit,
@@ -32,7 +32,7 @@ const ToDoForm = ({ refetch }) => {
           placeholder="what is the task today ?"
           type="text"
           {...register("task")}
-          className="bg-teal-600 outline-none border-2 border-teal-900 placeholder:text-teal-900 ps-5 pr-20 py-1 text-teal-950 selection:bg-teal-400"
+          className="bg-teal-600 outline-none border-2 border-teal-900 placeholder:text-teal-900 ps-5 pr-5 w-[270px] py-1 text-teal-950 selection:bg-teal-400"
         />
         <button
           type="submit"

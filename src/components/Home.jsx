@@ -22,7 +22,7 @@ const Home = () => {
     <div className="container mx-auto flex justify-center items-center pt-40  ">
       <div className="bg-teal-600 rounded-md  pb-8">
         <ToDoForm setTasks={setTasks} refetch={refetch} />
-        <Task tasks={tasks} />
+        <Task tasks={tasks} refetch={refetch} />
       </div>
     </div>
   );
