@@ -18,7 +18,6 @@ const ToDoForm = ({ setTask }) => {
 
         }
       })
-    // setTask( data)
   };
 
 
