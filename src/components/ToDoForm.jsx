@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { addTask } from "../api/tasks";
 
-const ToDoForm = ({ setTask }) => {
+const ToDoForm = ({ refetch }) => {
   const {
     register,
     handleSubmit,
@@ -15,7 +15,7 @@ const ToDoForm = ({ setTask }) => {
         if (res.insertedId) {
           toast.success('Task added successfully')
           reset();
-
+          refetch();
         }
       })
   };

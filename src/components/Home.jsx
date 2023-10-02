@@ -10,12 +10,18 @@ const Home = () => {
   useEffect(() => {
     getAllTask()
       .then(res => setTasks(res))
-  }, [setTasks])
+  }, []);
+
+
+  const refetch = async () => {
+    const allTasks = await getAllTask();
+    setTasks(allTasks);
+  }
 
   return (
     <div className="container mx-auto flex justify-center items-center pt-40  ">
       <div className="bg-teal-600 rounded-md  pb-8">
-        <ToDoForm setTasks={setTasks} />
+        <ToDoForm setTasks={setTasks} refetch={refetch} />
         <Task tasks={tasks} />
       </div>
     </div>
