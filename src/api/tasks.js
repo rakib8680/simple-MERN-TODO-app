@@ -14,5 +14,3 @@ export const getAllTask = async () => {
     return res.data;
 
 };
-
-

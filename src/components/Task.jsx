@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { FaPenToSquare, FaTrash } from 'react-icons/fa6';
 import { BsCheck2 } from 'react-icons/bs'
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 
 
@@ -13,14 +14,39 @@ const Task = ({ tasks, refetch }) => {
 
   console.log(tasks);
 
+
+  
+
+
+
   // delete task from database 
-  const deleteTask = async _id => {
-    const res = await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/tasks/${_id}`)
-    if (res.data.deletedCount > 0) {
-      toast.success('Task deleted successfully');
-      refetch();
-    }
-  }
+  const deleteTask = (_id) => {
+
+
+    Swal.fire({
+      title: 'Are you sure?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!'
+    })
+      .then(async (result) => {
+        if (result.isConfirmed) {
+          const res = await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/tasks/${_id}`)
+          console.log(res);
+          if (res.data.deletedCount > 0) {
+            toast.success('Task deleted successfully')
+            refetch();
+          }
+        }
+      })
+
+  };
+
+
+
+
 
 
 
